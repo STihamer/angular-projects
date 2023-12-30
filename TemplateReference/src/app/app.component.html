@@ -1,0 +1,7 @@
+<div>
+  <!--<app-demo></app-demo> -->
+  <app-customer-list #customer></app-customer-list>
+  <p (click)="logCustomer(customer)">
+    You have selected {{ customer.selectedCustomer?.name }}
+  </p>
+</div>
