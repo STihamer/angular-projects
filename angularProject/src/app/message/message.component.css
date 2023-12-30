@@ -1,0 +1,14 @@
+div {
+  margin: 10px 0 10px 0;
+  padding: 10px 20px;
+  background-color: skyblue;
+  text-align: center;
+}
+p {
+  font-size: 20px;
+}
+.close {
+  background: none;
+  float: right;
+  margin-top: -35px;
+}
