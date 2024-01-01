@@ -9,6 +9,7 @@ import { BookDetailsComponent } from './books/book/book-details.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const appRoute: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -30,7 +31,7 @@ const appRoute: Routes = [
     HomeComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoute)],
+  imports: [BrowserModule, RouterModule.forRoot(appRoute), FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

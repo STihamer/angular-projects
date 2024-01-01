@@ -3,7 +3,10 @@
     <img [src]="book.image" width="560" height="280" />
   </div>
   <div class="name">
-    <h1>{{ book.name }}</h1>
+    <h1 *ngIf="!editMode">{{ book.name }}</h1>
+    <div>
+      <input type="text" [(ngModel)]="book.name" *ngIf="editMode" />
+    </div>
   </div>
   <div class="book-details">
     <div style="margin: 0px 10px"><b>Author: </b>{{ book.Author }}</div>
@@ -18,7 +21,20 @@
       {{ book.description }}
     </p>
   </div>
-  <button class="btn btn-show" routerLink="/books/book/{{ book.id }}">
-    Show Deatils
-  </button>
+  <!-- <a [routerLink]="['/books/book', 1]">Go to first Book</a> -->
+  <div class="actions">
+    <button
+      [routerLink]="['/books/book', book.id]"
+      [queryParams]="{ edit: true, greeting: 'Hello' }"
+    >
+      Edit
+    </button>
+    <button
+      (click)="editMode = false"
+      [routerLink]="['/books/book', book.id]"
+      [queryParams]=""
+    >
+      Update
+    </button>
+  </div>
 </div>

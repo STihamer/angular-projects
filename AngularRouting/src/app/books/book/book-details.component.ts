@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BooksService } from 'src/app/services/books.service';
 @Component({
@@ -6,9 +6,11 @@ import { BooksService } from 'src/app/services/books.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css'],
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit, OnDestroy {
   book: any;
   bookId: any;
+  RouteParamsObs: any;
+  editMode: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -16,9 +18,20 @@ export class BookDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /* console.log(this.activatedRoute.snapshot);
-    this.bookId = this.activatedRoute.snapshot.paramMap.get('id');
+    /*  this.bookId = this.activatedRoute.snapshot.paramMap.get('id');
     this.book = this.bookService.books.find((book) => book.id == this.bookId);
     console.log(this.book); */
+
+    this.RouteParamsObs = this.activatedRoute.paramMap.subscribe((test) => {
+      this.bookId = test.get('id');
+      this.book = this.bookService.books.find((book) => book.id == this.bookId);
+    });
+    this.activatedRoute.queryParams.subscribe(
+      (params) => (this.editMode = Boolean(params['edit']))
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.RouteParamsObs.unsubscribe();
   }
 }
