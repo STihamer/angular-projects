@@ -23,7 +23,7 @@ export class AppComponent {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.determineGender(form.value.gender)
+      this.determineGender(form.value.gender);
       this.registrations.push(form.value);
       form.resetForm();
     }

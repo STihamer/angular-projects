@@ -1,5 +1,6 @@
 input[type="text"],
 [type="email"],
+[type="password"],
 select {
   width: 100%;
   padding: 12px 20px;
@@ -59,4 +60,16 @@ input.ng-touched.ng-invalid {
 .add-skill-button:hover {
   background-color: green;
   color: white;
+}
+.INVALID {
+  border: red 2px solid;
+  box-shadow: 0px 0px 30px red;
+}
+.PENDING {
+  border: yellow 2px solid;
+  box-shadow: 0px 0px 30px yellow;
+}
+.VALID {
+  border: green 2px solid;
+  box-shadow: 0px 0px 30px green;
 }

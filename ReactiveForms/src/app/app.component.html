@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" [ngClass]="formStatus">
   <h2 id="registration">Registration Form</h2>
   <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
     <div class="container" formGroupName="fullName">
@@ -62,6 +62,20 @@
     >
       The entered email is not a valid one
     </div>
+    <div class="container">
+      <input type="password" formControlName="password" />
+    </div>
+    <div style="color: red; font-size: 15px">
+      <ul
+        *ngIf="reactiveForm.get('password')?.errors?.['requirementsNotMet'] && reactiveForm.get('password')!.touched"
+      >
+        <li>Password must contain at least 1 lower case letter</li>
+        <li>Password must contain at least 1 upper case letter</li>
+        <li>Password must contain at least 1 number</li>
+        <li>Follwing Characters are not allowed: ! ? *</li>
+      </ul>
+    </div>
+
     <div style="padding-top: 10px">
       <label style="display: block" for="gender"><b>Gender:</b></label>
       <input
