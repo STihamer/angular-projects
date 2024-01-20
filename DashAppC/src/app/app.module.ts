@@ -16,8 +16,19 @@ import { AboutUsComponent } from './admin/structure/components/about-us/about-us
 import { ContactComponent } from './admin/structure/components/contact/contact.component';
 import { SettingsComponent } from './admin/structure/components/settings/settings.component';
 import { ServicesComponent } from './admin/structure/components/services/services.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [AppComponent, StructureComponent, NavbarComponent, DashboardComponent, MessagesComponent, AboutUsComponent, ContactComponent, SettingsComponent, ServicesComponent],
+  declarations: [
+    AppComponent,
+    StructureComponent,
+    NavbarComponent,
+    DashboardComponent,
+    MessagesComponent,
+    AboutUsComponent,
+    ContactComponent,
+    SettingsComponent,
+    ServicesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +38,7 @@ import { ServicesComponent } from './admin/structure/components/services/service
     MatIconModule,
     MatBadgeModule,
     MatToolbarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
